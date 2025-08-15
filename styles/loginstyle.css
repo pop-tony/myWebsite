@@ -1,0 +1,49 @@
+.container{
+    justify-content: center;
+    display: flex;
+    padding-top: 5rem;
+}
+.login{
+    display: none;
+    border: 1px solid;
+    width: 25rem;
+    height: fit-content;
+    padding: 5px;
+}
+
+.register{
+    display: block;
+    border: 1px solid;
+    width: 25rem;
+    height: fit-content;
+    padding: 5px;
+}
+
+.login #email{
+    margin-left: 27px;
+}
+
+.login #password{
+    margin-left: 5px;
+}
+
+.register #email{
+    margin-left: 31px;
+}
+
+.register #password{
+    margin-left: 9px;
+}
+
+.alt-method p{
+    margin-top: 5rem;
+    margin-left: 8rem;
+}
+
+.alt-method button{
+    margin-left: 10rem;
+}
+
+.log-ster-btn{
+    margin-left: 7rem;
+}

@@ -71,18 +71,18 @@ nav a{
 }
 
 .options{
-    margin-left: -3rem;
+    margin-left: -8rem;
     margin-top: 10px;
     display: none;
     position: absolute;
     text-decoration: none;
     padding: 3px;
-    width: fit-content;
+    width: 20rem;
     height: fit-content;
     text-align: left;
     background-color: rgb(24, 28, 31);
     border-radius: 7px;
-    box-shadow: 0px 10px 10px rgb(7, 4, 4);
+    box-shadow: 0px 30px 30px rgb(7, 4, 4);
     z-index: 10;
 }
 

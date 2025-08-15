@@ -3,51 +3,91 @@
     display: flex;
     padding-top: 5rem;
 }
+
+.container label{
+    margin-left: 4rem;
+}
+
 #login{
     display: block;
     border: 1px solid;
+    border-radius: 10px;
     width: 25rem;
     height: fit-content;
-    padding: 5px;
+    padding: 20px;
     position: relative;
+    opacity: 1;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
 #register{
     display: none;
     border: 1px solid;
+    border-radius: 10px;
     width: 25rem;
     height: fit-content;
-    padding: 5px;
+    padding: 10px;
     position: relative;
+    opacity: 0;
+    padding-top: 3rem;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
+
+#loginbtn{
+    margin-left: 15rem;
+}
+
+#registerbtn{
+    margin-left: 15rem;
+}
+
 
 .log-ster-active{
     display: block;
 }
 
-#login #email{
-    margin-left: 20px;
+#login #lemail{
+    margin-left: 28px;
 }
 
-#login #password{
+#login #lpassword{
     margin-left: 5px;
 }
 
-.register #email{
+.register #remail{
     margin-left: 31px;
 }
 
-.register #password{
+.register #rpassword{
     margin-left: 9px;
 }
 
-.alt-method p{
+#to-registertxt{
     margin-top: 5rem;
     margin-left: 8rem;
 }
 
-.alt-method button{
+#to-logintxt{
+    margin-top: 5rem;
+    margin-left: 8rem;
+}
+
+#to-registerbtn{
     margin-left: 10rem;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+}
+
+#to-loginbtn{
+    margin-left: 10rem;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
 }
 
 .log-ster-btn{

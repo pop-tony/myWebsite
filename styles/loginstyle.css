@@ -35,12 +35,29 @@
 
 #loginbtn{
     margin-left: 15rem;
+    border-radius: 5px;
+    height: 1.5rem;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+#loginbtn:hover{
+    font-weight: bold;
+    box-shadow: 0px 0px 8px rgb(0, 0, 0);
 }
 
 #registerbtn{
     margin-left: 15rem;
+    border-radius: 5px;
+    height: 1.5rem;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    cursor: pointer;
 }
 
+#registerbtn:hover{
+    font-weight: bold;
+    box-shadow: 0px 0px 8px rgb(0, 0, 0);
+}
 
 .log-ster-active{
     display: block;
@@ -48,18 +65,57 @@
 
 #login #lemail{
     margin-left: 28px;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 #login #lpassword{
     margin-left: 5px;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 .register #remail{
-    margin-left: 31px;
+    margin-left: 70px;
+    border: none;
+    height: 2rem;
+    border-radius: 5px;
+    border-bottom: 1px solid;
+}
+
+.register #remail:focus-within{
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.register #rusername{
+    margin-left: 37px;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 .register #rpassword{
-    margin-left: 9px;
+    margin-left: 45px;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.register #phone-number{
+    margin-left: 45px;
+    border: none;
+    border-bottom: 1px solid;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 #to-registertxt{
@@ -79,6 +135,12 @@
     border-radius: 5px;
     width: fit-content;
     padding: 5px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+#to-registerbtn:hover{
+    font-weight: bold;
+    box-shadow: 0px 0px 8px rgb(0, 0, 0);
 }
 
 #to-loginbtn{
@@ -88,6 +150,12 @@
     border-radius: 5px;
     width: fit-content;
     padding: 5px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+#to-loginbtn:hover{
+    font-weight: bold;
+    box-shadow: 0px 0px 8px rgb(0, 0, 0);
 }
 
 .log-ster-btn{

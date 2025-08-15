@@ -1,0 +1,133 @@
+header{
+    display: flex;
+    border: 1px solid;
+    justify-content: space-between;
+}
+
+
+header .profile_logout{
+    margin-right: 50px;
+    width: fit-content;
+    border: 1px solid;
+    position: relative;
+    display: flex;
+    height: fit-content;
+}
+
+.welcomemessage{
+    border: 1px solid;
+    height: 3rem;
+}
+
+.profile{
+    border: 1px solid;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+}
+
+.chart1{
+    border: 1px solid;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.chart2{
+    margin-left: 20px;
+    border: 1px solid;
+    width: fit-content;
+    height: fit-content;
+    margin: 5px;
+    margin-top: 30px;
+    position: relative;
+}
+
+#logoutbtn{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+svg{
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+nav{
+    display: flex;
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.options{
+    margin-left: -3rem;
+    margin-top: 10px;
+    display: none;
+    position: absolute;
+    text-decoration: none;
+    padding: 3px;
+    width: fit-content;
+    height: fit-content;
+    text-align: left;
+    background-color: rgb(24, 28, 31);
+    border-radius: 7px;
+    box-shadow: 0px 10px 10px rgb(7, 4, 4);
+    z-index: 10;
+}
+
+.options a{
+    display: block;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgb(245, 243, 243);
+    background-color: rgb(12, 12, 12);
+    position: relative;
+    margin: 5px;
+    margin-left: 20px;
+    margin-top: 1rem;
+    width: fit-content;
+    height: 1.2rem;
+}
+
+.options p{
+    display: block;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgb(245, 243, 243);
+    background-color: rgb(12, 12, 12);
+    position: relative;
+    margin: 5px;
+    margin-left: 20px;
+    margin-top: 1rem;
+    width: fit-content;
+    height: 1.2rem;
+}
+
+.options a:hover{
+    background-color: rgb(130, 149, 165);
+}
+
+.options p:hover{
+    background-color: rgb(130, 149, 165);
+}
+
+.options-show{
+    display: block;
+    position: absolute;
+    margin-top: 10px;
+} 

@@ -1,0 +1,39 @@
+.home-icon{
+    background-image: url('icons/home.svg');
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+.friends-icon{
+    background-image: url('icons/friend.jpg');
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+.market-icon{
+    background-image: url('icons/market.jpg');
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+.explore-icon{
+    background-image: url('icons/explore.svg');
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+.profile-icon{
+    background-image: url('icons/profile.jpg');
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}

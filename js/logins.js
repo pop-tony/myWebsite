@@ -1,18 +1,14 @@
-const to_register = document.getElementById('to-registerbtn');
-const to_login = document.getElementById('to-loginbtn');
-const login = document.getElementById('login');
-const register = document.getElementById('register');
+const toRegisterBtn = document.getElementById('to-registerbtn');
+const toLoginBtn = document.getElementById('to-loginbtn');
+const loginForm = document.getElementById('login');
+const registerForm = document.getElementById('register');
 
-to_register.addEventListener('click', event=>{
-    if(login.style.display === 'block'){
-        login.style.display = 'none';
-        register.style.display = 'block';
-    }
+toRegisterBtn.addEventListener('click', () => {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
 });
 
-to_login.addEventListener('click', event=>{
-    if(login.style.display === 'none'){
-        login.style.display = 'block';
-        register.style.display = 'none';
-    }
+toLoginBtn.addEventListener('click', () => {
+    registerForm.style.display = 'none';
+    loginForm.style.display = 'block';
 });

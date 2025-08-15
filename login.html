@@ -10,29 +10,35 @@
 <body>
     <div class="container">
         <div class="login">
-            <form id="login" action="" method="POST">
-                <label for email>Email</label>
+            <form id="login" action="#" method="POST">
+                <label for="email" >Email</label>
                 <input type="email" name="email" id="lemail" placeholder="Enter Email"><br><br>
-                <label for password>Password</label>
+                <label for="password" >Password</label>
                 <input type="password" name="password" id="lpassword" placeholder="Enter Password"><br><br>
                 <input class="log-ster-btn" id="loginbtn" type="submit" value="Log in">
-                <span class="alt-method"><p id="to-registertxt">Don't have an account?...</p>
-                <button id="to-registerbtn">Register</button></span>
+                <span class="alt-method">
+                    <p id="to-registertxt">Don't have an account?...</p>
+                    <p id="to-registerbtn">Register</p>
+                </span>
             </form>
+            
         </div>
 
         <div class="register">
-            <form id="register" action="" method="POST">
-                <label for username>User Name</label>
+            <form id="register" action="#" method="POST">
+                <label for="username" >User Name</label>
                 <input type="username" name="username" id="username" placeholder="Enter Username"><br><br>
-                <label for email>Email</label>
+                <label for="email" >Email</label>
                 <input type="email" name="email" id="remail" placeholder="Enter Email"><br><br>
-                <label for password>Password</label>
+                <label for="password" >Password</label>
                 <input type="password" name="password" id="rpassword" placeholder="Enter Password"><br><br>
                 <input class="log-ster-btn" id="registerbtn" type="submit" value="Register">
-                <span class="alt-method"><p id="to-logintxt">Have an account?...</p>
-                <button id="to-loginbtn">Log in</button></span>
+                <span class="alt-method">
+                    <p id="to-logintxt">Have an account?...</p>
+                    <p id="to-loginbtn">Log in</p>
+                </span>
             </form>
+
         </div>
     </div>
     <script src="js\logins.js"></script>

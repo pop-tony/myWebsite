@@ -3,27 +3,33 @@
     display: flex;
     padding-top: 5rem;
 }
-.login{
-    display: none;
-    border: 1px solid;
-    width: 25rem;
-    height: fit-content;
-    padding: 5px;
-}
-
-.register{
+#login{
     display: block;
     border: 1px solid;
     width: 25rem;
     height: fit-content;
     padding: 5px;
+    position: relative;
 }
 
-.login #email{
-    margin-left: 27px;
+#register{
+    display: none;
+    border: 1px solid;
+    width: 25rem;
+    height: fit-content;
+    padding: 5px;
+    position: relative;
 }
 
-.login #password{
+.log-ster-active{
+    display: block;
+}
+
+#login #email{
+    margin-left: 20px;
+}
+
+#login #password{
     margin-left: 5px;
 }
 

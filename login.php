@@ -8,6 +8,7 @@
     $user_name_err = $password_err = $email_err = $phone_number_err = "";
     $valid = true; 
     $valid1 = 0;
+    $how_far_message = "";
 
     // Function to test input
     function test_input($data) {
@@ -85,14 +86,14 @@
                         VALUES ('$username', '$hash', '$email', '$phone_number')";
                 try{
                 mysqli_query($conn, $sql);
-                echo "You now registered!";
+                $how_far_message = "You now registered!";
                 }
                 catch (mysqli_sql_exception $e) {
                     if ($e->getCode() == 1062) { // 1062 is the error code for duplicate entry
-                        echo "Username or Number or Email Taken!";
+                        $how_far_message = "Username or Number or Email Taken!";
                         $valid = false;
                     } else {
-                        echo "An error occurred: " . $e->getMessage();
+                        $how_far_message = "An error occurred: " . $e->getMessage();
                     }
                 }
             }
@@ -147,12 +148,12 @@
                     } 
                     else {
                         // Password incorrect
-                        echo "Incorrect password";
+                        $password_err = "Incorrect password";
                     }
                 } 
                 else {
                     // Email not found
-                    echo "Email not found";
+                    $email_err = "Email not found";
                 }
                 }
         }
@@ -173,6 +174,7 @@
     <div class="container">
         <div class="login">
             <form id="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <span class="how-far-message"> <?php echo $how_far_message; ?></span><br>
                 <label for="email" >Email</label>
                 <input type="email" name="email" id="lemail" placeholder="Enter Email" value="<?php if(isset($_POST['login'])){ echo $_POST["email"];} ?>">
                 <span class="error">* <?php echo $email_err; ?></span><br><br>
@@ -190,6 +192,7 @@
 
         <div class="register">
             <form id="register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <span class="how-far-message"> <?php echo $how_far_message; ?></span><br>
                 <input type="hidden" id="valid" value="<?php echo $valid; ?>">
                 <label for="username" >User Name</label>
                 <input type="username" name="username" id="rusername" placeholder="Enter Username" value="<?php if(!$valid && isset($_POST['register'])) { echo $_POST["username"];} ?>">

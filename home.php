@@ -1,3 +1,16 @@
+<?php
+    include ("php\dbConnect.php");
+    session_start();
+?>
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "Get"){
+        if(isset($_POST['logout'])){
+            session_unset();
+            session_destroy();
+            header("location:login.php");
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

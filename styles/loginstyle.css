@@ -12,7 +12,7 @@
     display: block;
     border: 1px solid;
     border-radius: 10px;
-    width: 25rem;
+    width: 30rem;
     height: fit-content;
     padding: 20px;
     position: relative;
@@ -24,7 +24,7 @@
     display: none;
     border: 1px solid;
     border-radius: 10px;
-    width: 25rem;
+    width: fit-content;
     height: fit-content;
     padding: 10px;
     position: relative;

@@ -172,6 +172,19 @@
 </head>
 <body>
     <div class="container">
+        <style>
+            form span.error {
+                color: rgb(200, 5, 5);
+                font-size: 12px;
+                font-weight: bold;
+                margin-left: 5px;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .error:empty {
+                opacity: 0;
+            }
+        </style>
         <div class="login">
             <form id="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <span class="how-far-message"> <?php echo $how_far_message; ?></span><br>

@@ -5,10 +5,16 @@
 
 <?php
 
+    $ruser_name_err = $rpassword_err = $remail_err = $rphone_number_err = "";
     $user_name_err = $password_err = $email_err = $phone_number_err = "";
     $valid = true; 
     $valid1 = 0;
-    $how_far_message = "";
+    $how_far_message = $_how_far_message = "";
+
+    $_SESSION['email'] = "";
+    $_SESSION['password'] = "";
+    $_SESSION['logged_in'] = "";
+    $_SESSION['username'] = "";
 
     // Function to test input
     function test_input($data) {
@@ -23,11 +29,11 @@
             // Signup validation
             //Username validation
             if (empty($_POST["username"])) {
-                $user_name_err = "Username is required";
+                $ruser_name_err = "Username is required";
                 $valid = false;
             } 
             elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["username"])) {
-                $user_name_err = "Only letters and white space allowed";
+                $ruser_name_err = "Only letters and white space allowed";
                 $valid = false;
             } 
             else {
@@ -35,11 +41,11 @@
 
                 //Email validation
                 if (empty($_POST["email"])) {
-                    $email_err = "Email is required";
+                    $remail_err = "Email is required";
                     $valid = false;
                 } 
                 elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-                    $email_err = "Invalid email format";
+                    $remail_err = "Invalid email format";
                     $valid = false;
                 } 
                 else {
@@ -47,11 +53,11 @@
         
                     //Password validation
                     if (empty($_POST["password"])) {
-                        $password_err = "Password is required";
+                        $rpassword_err = "Password is required";
                         $valid = false;
                     }
                     elseif(strlen($_POST["password"]) < 8){
-                        $password_err = "Password should be more than 8 characters";
+                        $rpassword_err = "Password should be more than 8 characters";
                         $valid = false;
                     }
                     else {
@@ -60,15 +66,15 @@
 
                         //Phone-number validation
                         if (empty($_POST["phone-number"])) {
-                            $phone_number_err = "Phone is required";
+                            $rphone_number_err = "Phone is required";
                             $valid = false;
                         } 
                         elseif (!preg_match("/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/", $_POST["phone-number"])) {
-                            $phone_number_err = "Invalid number format";
+                            $rphone_number_err = "Invalid number format";
                             $valid = false;
                         }
                         elseif(strlen($_POST["phone-number"]) < 10){
-                            $phone_number_err = "Number should be 10 or more";
+                            $rphone_number_err = "Number should be 10 or more";
                             $valid = false;
                         }
                         else {
@@ -86,7 +92,7 @@
                         VALUES ('$username', '$hash', '$email', '$phone_number')";
                 try{
                 mysqli_query($conn, $sql);
-                $how_far_message = "You now registered!";
+                $_how_far_message = "You now registered!";
                 }
                 catch (mysqli_sql_exception $e) {
                     if ($e->getCode() == 1062) { // 1062 is the error code for duplicate entry
@@ -143,6 +149,7 @@
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['password'] = $row['password'];
                         $_SESSION['logged_in'] = true;
+                        $_SESSION['username'] = $row['user_name'];
                         header("location:home.php");
                         exit;
                     } 
@@ -155,7 +162,7 @@
                     // Email not found
                     $email_err = "Email not found";
                 }
-                }
+            }
         }
     }
         
@@ -184,10 +191,24 @@
             .error:empty {
                 opacity: 0;
             }
+
+            .how-far-message{
+                color: rgb(243, 119, 119);
+                margin-left: 4rem;
+                box-shadow: 0px 0px 10px rgb(243, 119, 119);
+                text-shadow: 0px 0px 10px rgb(243, 119, 119);
+            }
+
+            ._how-far-message{
+                color: rgb(9, 185, 129);
+                margin-left: 6rem;
+                box-shadow: 0px 0px 10px rgb(9, 185, 129);
+                text-shadow: 0px 0px 10px rgb(9, 185, 129);
+            }
         </style>
         <div class="login">
             <form id="login" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <span class="how-far-message"> <?php echo $how_far_message; ?></span><br>
+                <span class="_how-far-message"> <?php echo $_how_far_message; ?></span><br><br>
                 <label for="email" >Email</label>
                 <input type="email" name="email" id="lemail" placeholder="Enter Email" value="<?php if(isset($_POST['login'])){ echo $_POST["email"];} ?>">
                 <span class="error">* <?php echo $email_err; ?></span><br><br>
@@ -205,20 +226,20 @@
 
         <div class="register">
             <form id="register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <span class="how-far-message"> <?php echo $how_far_message; ?></span><br>
+                <span class="how-far-message"> <?php echo $how_far_message; ?></span><br><br>
                 <input type="hidden" id="valid" value="<?php echo $valid; ?>">
                 <label for="username" >User Name</label>
                 <input type="username" name="username" id="rusername" placeholder="Enter Username" value="<?php if(!$valid && isset($_POST['register'])) { echo $_POST["username"];} ?>">
-                <span class="error">* <?php echo $user_name_err; ?></span><br><br><br>
+                <span class="error">* <?php echo $ruser_name_err; ?></span><br><br><br>
                 <label for="email" >Email</label>
                 <input type="email" name="email" id="remail" placeholder="Enter Email" value="<?php if(!$valid && isset($_POST['register'])) { echo $_POST["email"];} ?>">
-                <span class="error">* <?php echo $email_err; ?></span><br><br><br>
+                <span class="error">* <?php echo $remail_err; ?></span><br><br><br>
                 <label for="password" >Password</label>
                 <input type="password" name="password" id="rpassword" placeholder="Enter Password" >
-                <span class="error">* <?php echo $password_err; ?></span><br><br><br>
+                <span class="error">* <?php echo $rpassword_err; ?></span><br><br><br>
                 <label for="phone-number" >Phone Number</label>
                 <input type="text" name="phone-number" id="phone-number" placeholder="Enter Phone Number" value="<?php if(!$valid && isset($_POST['register'])) { echo $_POST["phone-number"];} ?>">
-                <span class="error">* <?php echo $phone_number_err; ?></span><br><br><br>
+                <span class="error">* <?php echo $rphone_number_err; ?></span><br><br><br>
                 <input class="log-ster-btn" id="registerbtn" type="submit" name="register" value="Register">
                 <span class="alt-method">
                     <p id="to-logintxt">Have an account?...</p>

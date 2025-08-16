@@ -30,7 +30,7 @@
     
     <header>
         <div class="welcomemessage">
-            Welcome.
+            Welcome <?php echo $_SESSION['username'];?>
         </div>
         <div class="navs">
             <nav>

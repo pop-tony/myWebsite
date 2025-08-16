@@ -141,7 +141,9 @@
                         // Start session, set login variables, etc.
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['password'] = $row['password'];
-                        header("location:home.html");
+                        $_SESSION['logged_in'] = true;
+                        header("location:home.php");
+                        exit;
                     } 
                     else {
                         // Password incorrect

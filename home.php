@@ -1,13 +1,18 @@
 <?php
     include ("php\dbConnect.php");
     session_start();
-?>
-<?php
-    if ($_SERVER["REQUEST_METHOD"] == "Get"){
-        if(isset($_POST['logout'])){
+    
+    if (!isset($_SESSION['logged_in'])) {
+        header("location: login.php");
+        exit();
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
+        if(isset($_GET["logout"])){
             session_unset();
             session_destroy();
             header("location:login.php");
+            exit;
         }
     }
 ?>
@@ -91,8 +96,8 @@
             </span>
 
             <span class="logout">
-                <form action="" method="GET">
-                    <input type="button" name="logout" id="logoutbtn" value="Log Out">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
+                    <input type="submit" name="logout" id="logoutbtn" value="Log Out">
                 </form>
             </span>
         </div>

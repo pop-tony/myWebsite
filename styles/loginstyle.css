@@ -161,3 +161,15 @@
 .log-ster-btn{
     margin-left: 7rem;
 }
+
+form span.error {
+    color: rgb(252, 2, 2);
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.error:empty {
+    opacity: 0;
+}

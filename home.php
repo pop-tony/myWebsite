@@ -84,11 +84,11 @@
                     528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/></svg>
 
                     <div class="options">
-                        <p> User Name.........</p>
-                        <p> Email........</p>
-                        <p> Account Type.......</p>
-                        <p href="#"> Number.....</p>
-                        <p href="#"> Rank.....</p>
+                        <p> User Name.........<?php echo $_SESSION['username'];?></p>
+                        <p> Email........<?php echo $_SESSION['email'];?></p>
+                        <p> Account Type.......<?php echo $_SESSION['account_type'];?></p>
+                        <p> Number.....<?php echo $_SESSION['number'];?></p>
+                        <p> Rank.....<?php echo $_SESSION['rank'];?></p>
                         <a href="#"> Potfolio.....</a>
                         <a href="#"> Settings.....</a>
                         <a href="#"> Account Info.....</a><br>

@@ -15,6 +15,12 @@
     $_SESSION['password'] = "";
     $_SESSION['logged_in'] = "";
     $_SESSION['username'] = "";
+    $_SESSION['account_type'] = "";
+    $_SESSION['number'] = "";
+    $_SESSION['rank'] = "";
+    $_SESSION['user_id'] = "";
+    $_SESSION['registry_date'] = "";
+    $_SESSION['account_balance'] = "";
 
     // Function to test input
     function test_input($data) {
@@ -159,26 +165,40 @@
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
 
-                if(mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    if(password_verify($password, $row['password'])) {
-                        // Login successful
-                        // Start session, set login variables, etc.
-                        $_SESSION['email'] = $row['email'];
-                        $_SESSION['password'] = $row['password'];
-                        $_SESSION['logged_in'] = true;
-                        $_SESSION['username'] = $row['user_name'];
-                        header("location:home.php");
-                        exit;
-                    } 
-                    else {
-                        // Password incorrect
-                        $password_err = "Incorrect password";
+                try {
+                    $query = "SELECT user_name, password, phone_number, account_type, rank, user_id, registry_date, account_balance 
+                            FROM users 
+                            WHERE email = ?";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        if (password_verify($password, $row['password'])) {
+                            // Login successful
+                            //set session variables
+                            $_SESSION['email'] = $email;
+                            $_SESSION['logged_in'] = true;
+                            $_SESSION['username'] = $row['user_name'];
+                            $_SESSION['account_type'] = $row['account_type'];
+                            $_SESSION['number'] = $row['phone_number'];
+                            $_SESSION['rank'] = $row['rank'];
+                            $_SESSION['user_id'] = $row['user_id'];
+                            $_SESSION['registry_date'] = $row['registry_date'];
+                            $_SESSION['account_balance'] = $row['account_balance'];
+                            header("location:home.php");
+                            exit;
+                        } else {
+                            $password_err = "Incorrect password";
+                        }
+                    } else {
+                        $email_err = "Email not found";
                     }
-                } 
-                else {
-                    // Email not found
-                    $email_err = "Email not found";
+                } catch (mysqli_sql_exception $e) {
+                    // Handle database error
+                    $error = "An error occurred: " . $e->getMessage();
                 }
             }
         }

@@ -24,15 +24,15 @@
         return $data;
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST['register'])) {
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['register'])) {
             // Signup validation
             //Username validation
-            if (empty($_POST["username"])) {
+            if(empty($_POST["username"])) {
                 $ruser_name_err = "Username is required";
                 $valid = false;
             } 
-            elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST["username"])) {
+            elseif(!preg_match("/^[a-zA-Z-' ]*$/", $_POST["username"])) {
                 $ruser_name_err = "Only letters and white space allowed";
                 $valid = false;
             } 
@@ -40,7 +40,7 @@
                 $username = test_input($_POST["username"]);
 
                 //Email validation
-                if (empty($_POST["email"])) {
+                if(empty($_POST["email"])) {
                     $remail_err = "Email is required";
                     $valid = false;
                 } 
@@ -65,11 +65,11 @@
                         $hash = password_hash($password, PASSWORD_DEFAULT);
 
                         //Phone-number validation
-                        if (empty($_POST["phone-number"])) {
+                        if(empty($_POST["phone-number"])) {
                             $rphone_number_err = "Phone is required";
                             $valid = false;
                         } 
-                        elseif (!preg_match("/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/", $_POST["phone-number"])) {
+                        elseif(!preg_match("/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/", $_POST["phone-number"])) {
                             $rphone_number_err = "Invalid number format";
                             $valid = false;
                         }
@@ -86,32 +86,50 @@
             }
     
             // If valid, proceed with signup logic
-            if ($valid) {
+            if($valid) {
                 // Prepare and execute SQL statement here
                 $sql = "INSERT INTO users (user_name, password, email, phone_number)
                         VALUES ('$username', '$hash', '$email', '$phone_number')";
+
+                try {
+                    $query = "SELECT email, phone_number FROM users WHERE email = ? OR phone_number = ?";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("ss", $email, $phone_number);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row['email'] == $email) {
+                            $how_far_message = "Email Taken!";
+                        } elseif ($row['phone_number'] == $phone_number) {
+                            $how_far_message = "Number Taken!";
+                        }
+                        $valid = false;
+                    }
+                } catch (mysqli_sql_exception $e) {
+                    $how_far_message = "An error occurred: " . $e->getMessage();
+                    $valid = false;
+                }
+
                 try{
-                mysqli_query($conn, $sql);
-                $_how_far_message = "You now registered!";
+                    mysqli_query($conn, $sql);
+                    $_how_far_message = "You now registered!";
                 }
                 catch (mysqli_sql_exception $e) {
-                    if ($e->getCode() == 1062) { // 1062 is the error code for duplicate entry
-                        $how_far_message = "Username or Number or Email Taken!";
-                        $valid = false;
-                    } else {
-                        $how_far_message = "An error occurred: " . $e->getMessage();
-                    }
+                    $how_far_message = "An error occurred: " . $e->getMessage();
+                    $valid = false;
                 }
             }
         } 
-        elseif (isset($_POST['login'])) {
+        elseif(isset($_POST['login'])) {
             // Login validation and logic
             //Email validation
-            if (empty($_POST["email"])) {
+            if(empty($_POST["email"])) {
                 $email_err = "Email is required";
                 $valid1 = 1;
             } 
-            elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            elseif(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
                 $email_err = "Invalid email format";
                 $valid1 = 1;
             } 
@@ -135,15 +153,15 @@
 
             // Login logic here
             if($valid1 === 0){
-                $sql = "SELECT * FROM users WHERE email = ?";
-                $stmt = mysqli_prepare($conn, $sql);
+                $sql1 = "SELECT * FROM users WHERE email = ?";
+                $stmt = mysqli_prepare($conn, $sql1);
                 mysqli_stmt_bind_param($stmt, "s", $email);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
 
-                if (mysqli_num_rows($result) > 0) {
+                if(mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
-                    if (password_verify($password, $row['password'])) {
+                    if(password_verify($password, $row['password'])) {
                         // Login successful
                         // Start session, set login variables, etc.
                         $_SESSION['email'] = $row['email'];
@@ -252,7 +270,7 @@
     
     <script>
         console.log(document.getElementById('valid').value);
-        if(document.getElementById('valid').value == ''){
+        if(document.getElementById('valid').value == ""){
             document.getElementById('login').style.display = 'none';
             document.getElementById('register').style.display = 'block';
             document.getElementById('register').style.opacity = '1';

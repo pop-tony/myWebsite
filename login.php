@@ -289,7 +289,6 @@
     </div>
     
     <script>
-        console.log(document.getElementById('valid').value);
         if(document.getElementById('valid').value == ""){
             document.getElementById('login').style.display = 'none';
             document.getElementById('register').style.display = 'block';

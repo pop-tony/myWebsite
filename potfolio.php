@@ -16,15 +16,14 @@
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myWebsite</title>
+    <title>Potfolio</title>
     <link rel="stylesheet" href="styles\style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
@@ -104,19 +103,6 @@
 
     </header>
 
-    <div class="container">
-        <div class="chart1">
-            <marquee>Hello! Work in Progress</marquee><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <marquee>Hello! Work in Progress</marquee>
-        </div>
-
-        <div class="chart2">
-            <marquee>Hello! Work in Progress</marquee><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <marquee>Hello! Work in Progress</marquee>
-        </div>
-    </div>
     <script src="js\header.js"></script>
 </body>
 </html>

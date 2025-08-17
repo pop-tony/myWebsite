@@ -33,7 +33,7 @@
         </div>
         <div class="navs">
             <nav>
-                <a class="navmenu" href="#"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="home.php"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                      <path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3

@@ -212,7 +212,7 @@
 
             .how-far-message{
                 color: rgb(243, 119, 119);
-                margin-left: 4rem;
+                margin-left: 8rem;
                 box-shadow: 0px 0px 10px rgb(243, 119, 119);
                 text-shadow: 0px 0px 10px rgb(243, 119, 119);
             }

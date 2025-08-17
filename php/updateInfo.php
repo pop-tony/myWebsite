@@ -71,14 +71,11 @@
                         // If valid, proceed with signup logic
                         if($valid) {
                             // Prepare and execute SQL statement here
-                            $sql = "UPDATE users
-                                SET user_name = '$username', email = '$email', phone_number = '$phone_number'
-                                WHERE user_id = $upd_id";
-
                             try {
-                                $query = "SELECT email, phone_number FROM users WHERE email != ? || phone_number != ?";
+                                // Check for existing records
+                                $query = "SELECT user_id, email, phone_number FROM users WHERE (email = ? OR phone_number = ?) AND user_id != ?";
                                 $stmt = $conn->prepare($query);
-                                $stmt->bind_param("ss", $email, $phone_number);
+                                $stmt->bind_param("sss", $email, $phone_number, $upd_id);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
 
@@ -86,25 +83,25 @@
                                     $row = mysqli_fetch_assoc($result);
                                     if ($row['email'] == $email) {
                                         $how_far_message = "Email Taken!";
+                                        $valid = false;
                                     } 
                                     elseif ($row['phone_number'] == $phone_number) {
                                         $how_far_message = "Number Taken!";
+                                        $valid = false;
                                     }
-                                    $valid = false;
+                                } 
+                                else {
+                                    // Update user information
+                                    $query = "UPDATE users SET user_name = ?, email = ?, phone_number = ? WHERE user_id = ?";
+                                    $stmt = $conn->prepare($query);
+                                    $stmt->bind_param("ssss", $username, $email, $phone_number, $upd_id);
+                                    $stmt->execute();
+                                    // Handle successful update
+                                    $how_far_message = "Info Updated!";
                                 }
                             } 
                             catch (mysqli_sql_exception $e) {
-                                $how_far_message = "An error occurred: " . $e->getMessage();
-                                $valid = false;
-                            }
-
-                            try{
-                                mysqli_query($conn, $sql);
-                                $how_far_message = "Info Updated!";
-                                $_SESSION['email'] = $email;
-                                $_SESSION['logged_in'] = true;
-                            }
-                            catch (mysqli_sql_exception $e) {
+                                // Handle database error
                                 $how_far_message = "An error occurred: " . $e->getMessage();
                                 $valid = false;
                             }
@@ -151,9 +148,10 @@
                                 WHERE user_id = $upd_id";
 
                             try {
-                                $query = "SELECT email, phone_number FROM users WHERE email != ? || phone_number != ?";
+                                // Check for existing records
+                                $query = "SELECT user_id, email, phone_number FROM users WHERE (email = ? OR phone_number = ?) AND user_id != ?";
                                 $stmt = $conn->prepare($query);
-                                $stmt->bind_param("ss", $email, $phone_number);
+                                $stmt->bind_param("sss", $email, $phone_number, $upd_id);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
 
@@ -161,25 +159,25 @@
                                     $row = mysqli_fetch_assoc($result);
                                     if ($row['email'] == $email) {
                                         $how_far_message = "Email Taken!";
+                                        $valid = false;
                                     } 
                                     elseif ($row['phone_number'] == $phone_number) {
                                         $how_far_message = "Number Taken!";
+                                        $valid = false;
                                     }
-                                    $valid = false;
+                                } 
+                                else {
+                                    // Update user information
+                                    $query = "UPDATE users SET user_name = ?, email = ?, phone_number = ? WHERE user_id = ?";
+                                    $stmt = $conn->prepare($query);
+                                    $stmt->bind_param("ssss", $username, $email, $phone_number, $upd_id);
+                                    $stmt->execute();
+                                    // Handle successful update
+                                    $how_far_message = "Info Updated!";
                                 }
                             } 
                             catch (mysqli_sql_exception $e) {
-                                $how_far_message = "An error occurred: " . $e->getMessage();
-                                $valid = false;
-                            }
-
-                            try{
-                                mysqli_query($conn, $sql);
-                                $how_far_message = "Info Updated!";
-                                $_SESSION['email'] = $email;
-                                $_SESSION['logged_in'] = true;
-                            }
-                            catch (mysqli_sql_exception $e) {
+                                // Handle database error
                                 $how_far_message = "An error occurred: " . $e->getMessage();
                                 $valid = false;
                             }

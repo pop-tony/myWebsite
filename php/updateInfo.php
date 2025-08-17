@@ -174,6 +174,7 @@
                                     $stmt->execute();
                                     // Handle successful update
                                     $how_far_message = "Info Updated!";
+                                    
                                 }
                             } 
                             catch (mysqli_sql_exception $e) {
@@ -199,7 +200,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Info</title>
-    <link rel="stylesheet" href="styles\loginstyle.css">
+    <link rel="stylesheet" href="..\styles\loginstyle.css">
 </head>
 <body>
     <div class="container">
@@ -223,10 +224,31 @@
                 text-shadow: 0px 0px 10px rgba(97, 207, 99, 1);
             }
 
+            #update-info{
+                display: block;
+                border: 1px solid;
+                border-radius: 10px;
+                width: fit-content;
+                height: fit-content;
+                padding: 10px;
+                position: relative;
+                opacity: 1;
+                padding-top: 3rem;
+                box-shadow: 0px 0px 10px rgb(0, 0, 0);
+            }
+
+            #update-info .password-option{
+                margin-left: 4rem;
+            }
+
+            #rpasswordl{
+                opacity: 0;
+            }
+
         </style>
 
         <div class="register">
-            <form id="register" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <form id="update-info" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <span class="how-far-message"> <?php echo $how_far_message; ?></span><br><br>
                 <label for="username" >User Name</label>
                 <input type="text" name="username" id="rusername" placeholder="Enter Username" value="<?php echo !$valid && isset($_POST['register']) ? $_POST["username"] : $puser_name; ?>">
@@ -234,17 +256,16 @@
                 <label for="email" >Email</label>
                 <input type="email" name="email" id="remail" placeholder="Enter Email" value="<?php echo !$valid && isset($_POST['register']) ? $_POST["email"] : $pemail; ?>">
                 <span class="error">* <?php echo $remail_err; ?></span><br><br><br>
-                <label for="password" >Password</label>
-                <input type="hidden" name="password" id="rpassword" placeholder="Enter New Password">
-                <span class="error" id="opass_err">* <?php echo $rpassword_err; ?></span><br>
-                <input type="radio" name="password-option" id="change-pass" value="change">
-                <label for="change-pass">Change Password</label><br>
-                <input type="radio" name="password-option" id="keep-pass" value="keep">
-                <label for="keep-pass">Keep Password</label>
-                <br><br><br>
                 <label for="phone-number" >Phone Number</label>
                 <input type="text" name="phone-number" id="phone-number" placeholder="Enter Phone Number" value="<?php echo !$valid && isset($_POST['register']) ? $_POST["phone-number"] : $pphone_number; ?>">
                 <span class="error">* <?php echo $rphone_number_err; ?></span><br><br><br>
+                <span id="rpasswordl"><label for="password" >Password</label>
+                <input type="text" name="password" id="rpassword" placeholder="Enter New Password">
+                <span class="error" id="opass_err"> *<?php echo $rpassword_err; ?></span></span><br>
+                <input type="radio" class="password-option" name="password-option" id="change-pass" value="change">
+                <label for="change-pass">Change Password</label><br>
+                <input type="radio" class="password-option" name="password-option" id="keep-pass" value="keep">
+                <label for="keep-pass">Keep Password</label><br><br><br>
                 <input class="log-ster-btn" id="registerbtn" type="submit" name="register" value="Update">
             </form>
 
@@ -253,13 +274,14 @@
     <script>
         document.getElementById('change-pass').addEventListener('click', (e)=>{
             //e.preventDefault();
-            document.getElementById('rpassword').type = "text";
+            document.getElementById('rpasswordl').style.opacity = 1;
             document.getElementById('opass_err').innerHtml = "* <?php echo $rpassword_err; ?>";
         });
         
         document.getElementById('keep-pass').addEventListener('click', (e)=>{
            //e.preventDefault();
            document.getElementById('opass_err').type = "hidden";
+           location.reload();
         }); 
     </script>
 </body>

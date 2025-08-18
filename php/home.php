@@ -1,5 +1,5 @@
 <?php
-    include ("php\dbConnect.php");
+    include ("dbConnect.php");
     session_start();
     
     if(!($_SESSION['logged_in'])) {
@@ -11,19 +11,20 @@
         if(isset($_GET["logout"])){
             session_unset();
             session_destroy();
-            header("location:login.php");
+            header("location:../index.html");
             exit;
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="stylesheet" href="styles\style.css"/>
+    <title>myWebsite</title>
+    <link rel="stylesheet" href="..\styles\style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
@@ -33,7 +34,7 @@
         </div>
         <div class="navs">
             <nav>
-                <a class="navmenu" href="home.php"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="#"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                      <path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3
@@ -103,6 +104,19 @@
 
     </header>
 
-    <script src="js\header.js"></script>
+    <div class="container">
+        <div class="chart1">
+            <marquee>Hello! Work in Progress</marquee><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <marquee>Hello! Work in Progress</marquee>
+        </div>
+
+        <div class="chart2">
+            <marquee>Hello! Work in Progress</marquee><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <marquee>Hello! Work in Progress</marquee>
+        </div>
+    </div>
+    <script src="..\js\header.js"></script>
 </body>
 </html>

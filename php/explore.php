@@ -1,5 +1,5 @@
 <?php
-    include ("php\dbConnect.php");
+    include ("dbConnect.php");
     session_start();
     
     if(!($_SESSION['logged_in'])) {
@@ -11,7 +11,7 @@
         if(isset($_GET["logout"])){
             session_unset();
             session_destroy();
-            header("location:login.php");
+            header("location:../index.html");
             exit;
         }
     }
@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore</title>
-    <link rel="stylesheet" href="styles\style.css"/>
+    <link rel="stylesheet" href="..\styles\style.css"/>
 </head>
 <body>
     
@@ -103,6 +103,6 @@
 
     </header>
 
-    <script src="js\header.js"></script>
+    <script src="..\js\header.js"></script>
 </body>
 </html>

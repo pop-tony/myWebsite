@@ -1,6 +1,20 @@
 <?php
     include ("dbConnect.php");
     session_start();
+
+    if(!($_SESSION['logged_in'])) {
+        header("location:login.php");
+        exit();
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
+        if(isset($_GET["logout"])){
+            session_unset();
+            session_destroy();
+            header("location:../index.html");
+            exit;
+        }
+    }
 ?>
 
 <?php
@@ -216,7 +230,7 @@
         </div>
         <div class="navs">
             <nav>
-                <a class="navmenu" href="..\home.php"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="home.php"> Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                      <path d="M341.8 72.6C329.5 61.2 310.5 61.2 298.3 72.6L74.3 280.6C64.7 289.6 61.5 303.5 66.3
@@ -224,7 +238,7 @@
                        576 528 547.3 528 512L528 336L544 336C557.2 336 569 327.9 573.8 315.7C578.6 303.5 575.4
                         289.5 565.8 280.6L341.8 72.6zM304 384L336 384C362.5 384 384 405.5 384 432L384 528L256 528L256
                          432C256 405.5 277.5 384 304 384z"/></svg> </a>
-                <a class="navmenu" href="..\peers.php"> Peers <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="peers.php"> Peers <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                      <path d="M96 192C96 130.1 146.1 80 208 80C269.9 80 320 130.1 320 192C320 253.9 269.9
@@ -234,7 +248,7 @@
                         171 411 128 464 128zM464 368C543.5 368 608 432.5 608 512L608 534.4C608 557.4 589.4 576 566.4
                          576L421.6 576C428.2 563.5 432 549.2 432 534L432 528C432 476.5 414.6 429.1 385.5 391.3C408.1 376.6
                           435.1 368 464 368z"/></svg> </a>
-                <a class="navmenu" href="..\market.php"> Market <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="market.php"> Market <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                      <path d="M53.5 245.1L110.3 131.4C121.2 109.7 143.3 96 167.6 96L472.5 96C496.7 96 518.9 109.7
@@ -243,7 +257,7 @@
                         522.5 362.5 544 336 544L144 544C117.5 544 96 522.5 96 496L96 319.9C69.2 318 48 295.6 48
                          268.3C48 260.3 49.9 252.3 53.5 245.1zM160 320L160 432C160 440.8 167.2 448 176 448L304
                           448C312.8 448 320 440.8 320 432L320 320L160 320z"/></svg> </a>
-                <a class="navmenu" href="..\explore.php"> Explore <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <a class="navmenu" href="explore.php"> Explore <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     <!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License
                      - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                     <path d="M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4
@@ -271,9 +285,9 @@
                         <p> Account Type.......<?php echo $_SESSION['account_type'];?></p>
                         <p> Number.....<?php echo $_SESSION['number'];?></p>
                         <p> Rank.....<?php echo $_SESSION['rank'];?></p>
-                        <a href="..\potfolio.php"> Potfolio.....</a>
-                        <a href="..\settings.php"> Settings.....</a>
-                        <a href="..\accountInfo.php"> Account Info.....</a><br>
+                        <a href="potfolio.php"> Potfolio.....</a>
+                        <a href="settings.php"> Settings.....</a>
+                        <a href="accountInfo.php"> Account Info.....</a><br>
                     </div>
             </span>
 

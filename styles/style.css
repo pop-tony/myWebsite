@@ -1,5 +1,6 @@
 header{
     display: flex;
+    flex-wrap: wap;
     border: 1px solid;
     justify-content: space-between;
 }
@@ -51,6 +52,9 @@ header .profile_logout{
 #logoutbtn{
     margin-left: 10px;
     cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 5px;
 }
 
 svg{

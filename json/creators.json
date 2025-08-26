@@ -7,14 +7,14 @@
         {
           "id": 1,
           "title": "Movie 1",
-          "image": "../images/movie1.jpg",
+          "image": "./images/movie1.jpg",
           "description": "This is a movie",
           "featured": true
         },
         {
           "id": 2,
           "title": "Music 1",
-          "image": "../images/music1.jpg",
+          "image": "./images/music1.jpg",
           "description": "This is a music",
           "featured": false
         }
@@ -27,14 +27,14 @@
         {
           "id": 1,
           "title": "Art 1",
-          "image": "../images/art1.jpg",
+          "image": "./images/art1.jpg",
           "description": "This is an art",
           "featured": true
         },
         {
           "id": 1,
           "title": "Movie 2",
-          "image": "../images/movie2.jpg",
+          "image": "./images/movie2.jpg",
           "description": "This is an movie",
           "featured": false
         }
@@ -47,14 +47,14 @@
         {
           "id": 1,
           "title": "Art 2",
-          "image": "../images/art2.jpg",
+          "image": "./images/art2.jpg",
           "description": "This is an art",
           "featured": true
         },
         {
           "id": 2,
           "title": "Music 2",
-          "image": "../images/music2.jpg",
+          "image": "./images/music2.jpg",
           "description": "This is an music",
           "featured": false
         }

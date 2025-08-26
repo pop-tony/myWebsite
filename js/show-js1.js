@@ -7,6 +7,53 @@ let fcreators = [];
 let fworks = [];
 let fnfts = [];
 
+//slider
+let slides;
+let slideIndex = 0;
+let intervalId = null;
+
+function initializeSlider() {
+    slides = document.querySelectorAll('.cardf');
+    slides[slideIndex].classList.add("showSlide");
+    intervalId = setInterval(showSlide, 5000);
+}
+
+function showSlide() {
+    slideIndex++;
+
+    if (slideIndex == slides.length) {
+        slides[slideIndex - 1].classList.remove("showSlide");
+        slideIndex = 0;
+    }
+
+    if (slideIndex == 0) {
+        slides[slideIndex].classList.add("showSlide");
+    } else if (slideIndex > 0) {
+        slides[slideIndex - 1].classList.remove("showSlide");
+        slides[slideIndex].classList.add("showSlide");
+    }
+}
+
+function prevSlide() {
+    clearInterval(intervalId);
+    if (slideIndex > 0) {
+    slides[slideIndex].classList.remove("showSlide");
+    slides[slideIndex - 1].classList.add("showSlide");
+    slideIndex -= 1;
+    }
+    intervalId = setInterval(showSlide, 5000);
+}
+
+function nextSlide() {
+    clearInterval(intervalId);
+    if (slideIndex < slides.length - 1) {
+        slides[slideIndex].classList.remove("showSlide");
+        slides[slideIndex + 1].classList.add("showSlide");
+        slideIndex += 1;
+    }
+    intervalId = setInterval(showSlide, 5000);
+}
+
 // Function to generate cards for creators
 function generateCards() {
     const featuredContainer = document.querySelector('#featured-section .card-container');
@@ -23,13 +70,16 @@ function generateCards() {
                     const card = createCard(work);
                     worksContainer.appendChild(card);
                     if (work.featured) {
-                        featuredContainer.appendChild(card.cloneNode(true));
-                    } 
+                        const featuredCard = card.cloneNode(true);
+                        featuredCard.classList.add('cardf');
+                        featuredContainer.appendChild(featuredCard);
+                    }
                     return {featured: work.featured, title: work.title, description: work.description, element: card}
                 });
             });
+            initializeSlider(); // Call initializeSlider here
         })
-        .catch(error => console.error('Error fetching or parsing JSON:', error));
+    .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
 
 function createCard(work) {
@@ -41,6 +91,8 @@ function createCard(work) {
             <h3>${work.title}</h3>
             <p>${work.description}</p>
         </div>
+        <button id="prev" class="prev" onclick="prevSlide()">&#10094</button>
+        <button id="next" class="next" onclick="nextSlide()">&#10095</button>
     `;
     return card;
 }

@@ -1,23 +1,53 @@
 header{
     display: flex;
     flex-wrap: wap;
-    border: 1px solid;
+    border: none;
     justify-content: space-between;
+    background-color: #c3d9dc;
+    border-radius: 5px;
 }
 
+header a{
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 5px 5px 20px rgba(23, 17, 188, 0.2);
+}
+
+.login a{
+    background-color: rgb(48, 46, 46);
+    padding-bottom: 3px;
+    color: wheat;
+}
 
 header .profile_logout{
     margin-right: 50px;
     width: fit-content;
-    border: 1px solid;
+    border: none;
+    border-radius: 5px;
     position: relative;
     display: flex;
     height: fit-content;
 }
 
+header .search-bar input{
+    margin-top: 8px;
+    padding-top: 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px rgba(23, 17, 188, 0.2);
+    background-color: #c2c2c2;
+}
+
+header #search{
+    cursor: pointer;
+    background-color: #f2e2e2;
+}
+
 .welcomemessage{
-    border: 1px solid;
+    border: none;
     height: 3rem;
+    box-shadow: 5px 5px 20px rgba(23, 17, 188, 0.2);
+    border-radius: 5px;
 }
 
 .profile{

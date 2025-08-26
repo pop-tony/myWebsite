@@ -72,7 +72,21 @@ nav a {
     animation-duration: 1.5s;
 }
 
-.card-container button{
+.featured-section{
+    width: fit-content;
+}
+
+.show{
+    display: flex;
+}
+
+.pop{
+    margin-left: 30px;
+    border-radius: 5px;
+    background-color: rgb(4, 107, 138);
+}
+
+button{
     position: absolute;
     padding: 10px 15px;
     top: 50%;
@@ -83,13 +97,15 @@ nav a {
     border: none;
     cursor: pointer;
 }
-
-#prev{
-    left:0;
+.prev {
+    left: 0;
+}
+.next {
+    right: 0;
 }
 
-#next{
-    right: 0;
+#works-section button{
+    display: none;
 }
 
 @keyframes fade {

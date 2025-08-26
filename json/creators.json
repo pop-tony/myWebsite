@@ -2,19 +2,19 @@
   "creators": [
     {
       "id": 1,
-      "name": "John Doe",
+      "name": "Pop Tony",
       "works": [
         {
           "id": 1,
           "title": "Movie 1",
-          "image": "",
+          "image": "../images/movie1.jpg",
           "description": "This is a movie",
           "featured": true
         },
         {
           "id": 2,
           "title": "Music 1",
-          "image": "",
+          "image": "../images/music1.jpg",
           "description": "This is a music",
           "featured": false
         }
@@ -22,14 +22,41 @@
     },
     {
       "id": 2,
-      "name": "Jane Doe",
+      "name": "Kobe Ap",
       "works": [
         {
-          "id": 3,
+          "id": 1,
           "title": "Art 1",
-          "image": "",
+          "image": "../images/art1.jpg",
           "description": "This is an art",
           "featured": true
+        },
+        {
+          "id": 1,
+          "title": "Movie 2",
+          "image": "../images/movie2.jpg",
+          "description": "This is an movie",
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Larry Latif",
+      "works": [
+        {
+          "id": 1,
+          "title": "Art 2",
+          "image": "../images/art2.jpg",
+          "description": "This is an art",
+          "featured": true
+        },
+        {
+          "id": 2,
+          "title": "Music 2",
+          "image": "../images/music2.jpg",
+          "description": "This is an music",
+          "featured": false
         }
       ]
     }

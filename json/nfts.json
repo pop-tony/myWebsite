@@ -3,14 +3,21 @@
     {
         "id": 1,
         "title": "NFT 1",
-        "image": "",
+        "image": "../images/movie3.jpg",
         "price": 100,
         "description": "This is an NFT"
     },
     {
         "id": 2,
         "title": "NFT 2",
-        "image": "",
+        "image": "../images/music3.jpg",
+        "price": 200,
+        "description": "This is another NFT"
+    },
+    {
+        "id": 3,
+        "title": "NFT 2",
+        "image": "../images/art3.jpg",
         "price": 200,
         "description": "This is another NFT"
     }

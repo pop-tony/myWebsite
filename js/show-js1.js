@@ -143,11 +143,11 @@ function toggleView() {
         if (mainContent.style.display === 'none') {
             mainContent.style.display = 'block';
             tradingView.style.display = 'none';
-            toggleButton.textContent = 'Switch to Trading View';
+            toggleButton.textContent = 'Traders 📈';
         } else {
             mainContent.style.display = 'none';
             tradingView.style.display = 'block';
-            toggleButton.textContent = 'Switch to Creator\'s Hub';
+            toggleButton.textContent = 'Creators 🎨';
         }
     });
 }
